@@ -1,8 +1,8 @@
 // eslint-disable-next-line prettier/prettier
 import {Client, CommandInteraction} from 'discord.js';
-import {CommandType} from '../../types';
+import {SlashCommand, CommandType} from '../../types';
 
-export const ping = {
+export const ping: SlashCommand = {
   name: 'ping',
   description: 'returns websocket ping',
   type: CommandType.ChatInput,
@@ -12,6 +12,11 @@ export const ping = {
       description: 'This is a example option to demonstrate autocomplete',
       type: 3,
       autocomplete: true,
+    },
+    {
+      name: 'example2',
+      description: 'This is a example option to demonstrate autocomplete',
+      type: 'CHANNEL',
     },
   ],
   autocomplete: {
@@ -24,7 +29,9 @@ export const ping = {
    * @param {String[]} _args
    */
   // eslint-disable-next-line prettier/prettier
-  run: async (client: Client, interaction: CommandInteraction) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  run: async (client: Client, interaction: CommandInteraction, args: any) => {
+    console.log(args);
     interaction.followUp({content: `${client.ws.ping}ms!`});
   },
 };
