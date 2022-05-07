@@ -10,6 +10,12 @@ client.on('interactionCreate', async (interaction: Interaction) => {
     const args: {[k: string]: any} = {};
 
     for (const option of interaction.options.data) {
+      // Valid options have names, so push that to the args object.
+      if (option.name) {
+        args[option.name] = option;
+      }
+
+      // * I'm not sure if this is necessary, but I'm keeping it here for now.
       option.options?.forEach(x => {
         if (x.value) args.x = x.value;
       });
