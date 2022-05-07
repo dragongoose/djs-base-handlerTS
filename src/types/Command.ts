@@ -23,6 +23,14 @@ export interface Command {
   description: string;
 
   /**
+   * The usage of the command.
+   * @type {string}
+   * @example
+   * `!ping <argument1> <argument2> <argument3>`
+   */
+  usage: string;
+
+  /**
    * The function to run when the command is called.
    * @param {Client} client The client that the command was called on.
    * @param {Message} message The message that the command was called on.
