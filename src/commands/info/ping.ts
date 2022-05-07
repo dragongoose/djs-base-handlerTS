@@ -12,7 +12,8 @@ export const ping: Command = {
    * @param {Message} message
    * @param {String[]} args
    */
-  run: async (client: Client, message: Message) => {
+  run: async (client: Client, message: Message, args: string[]) => {
     message.channel.send(`${client.ws.ping} ws ping`);
+    console.log(args);
   },
 };
