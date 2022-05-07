@@ -16,12 +16,12 @@ cd djs-base-handlerTS
 ```
 2. Change the config to fit your needs
 
-4. Compile the repo
+3. Compile the repo
 ```bash
 npx tsc
 ```
 
-5. Run the bot
+4. Run the bot
 ```bash
 node ./build/index
 
