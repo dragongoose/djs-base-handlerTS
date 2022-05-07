@@ -2,7 +2,7 @@ import {Client} from 'discord.js';
 import mongoose from 'mongoose';
 import * as cmds from '../commands';
 import * as slashcmds from '../slashCommands';
-import {Command, CommandProperties, Data} from '../types';
+import {Command, SlashCommand, CommandProperties, Data} from '../types';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -21,7 +21,7 @@ export default async (client: Client, data: Data) => {
     }
   }
 
-  const arrayOfSlashCommands: Command[] = [];
+  const arrayOfSlashCommands: SlashCommand[] = [];
 
   //Events
   const dir = path.join(__dirname, '../events');
@@ -36,7 +36,7 @@ export default async (client: Client, data: Data) => {
   // Slash Commands
   const slashArray = [...Object.values(slashcmds)];
   for (let i = 0; i < slashArray.length; i++) {
-    const command: Command = slashArray[i];
+    const command: SlashCommand = slashArray[i];
 
     if (command.name) {
       data.slashCommands.set(command.name, command);
