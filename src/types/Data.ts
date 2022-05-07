@@ -1,5 +1,7 @@
 import {Collection} from 'discord.js';
-import {Config, CommandProperties} from '.';
+import {Config} from '.';
+import {Command} from './Command';
+import {SlashCommand} from './SlashCommand';
 
 export interface Data {
   /**
@@ -10,13 +12,13 @@ export interface Data {
 
   /**
    * All the bot's commands.
-   * @type {Collection<string, CommandProperties>}
+   * @type {Collection<string, Command>}
    */
-  commands: Collection<string, CommandProperties>;
+  commands: Collection<string, Command>;
 
   /**
    * All the bot's slash commands.
-   * @type {Collection<string, CommandProperties>}
+   * @type {Collection<string, SlashCommand}
    */
-  slashCommands: Collection<string, CommandProperties>;
+  slashCommands: Collection<string, SlashCommand>;
 }
