@@ -42,7 +42,7 @@ client.on('interactionCreate', async (interaction: Interaction) => {
     if (!autocomplete) return;
 
     //Put the choices into an array
-    const choices = autocomplete[focusedOption.name].choices;
+    const choices = autocomplete[focusedOption.name];
 
     //Make the array into a ApplicationCommandOptionChoice object
     const final = choices.map((choice: string) => ({

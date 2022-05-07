@@ -17,7 +17,5 @@
  * what the values are.
  */
 export interface AutocompleteChoices {
-  [key: string]: {
-    choices: string[];
-  };
+  [key: string]: string[];
 }
