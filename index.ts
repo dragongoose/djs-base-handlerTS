@@ -1,6 +1,6 @@
 import {Client, Collection} from 'discord.js';
 import {config} from './config';
-import {Command} from './src/types';
+import {Command, SlashCommand} from './src/types';
 
 export const client = new Client({
   intents: config.intents,
@@ -9,7 +9,7 @@ export const client = new Client({
 export const data = {
   config,
   commands: new Collection() as Collection<string, Command>,
-  slashCommands: new Collection() as Collection<string, Command>,
+  slashCommands: new Collection() as Collection<string, SlashCommand>,
 };
 
 // Initializing the project
