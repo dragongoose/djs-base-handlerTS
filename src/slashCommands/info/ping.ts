@@ -1,11 +1,11 @@
 // eslint-disable-next-line prettier/prettier
 import {Client, CommandInteraction} from 'discord.js';
-import {SlashCommand, CommandType} from '../../types';
+import {SlashCommand} from '../../types';
 
 export const ping: SlashCommand = {
   name: 'ping',
   description: 'returns websocket ping',
-  type: CommandType.ChatInput,
+  type: 'CHAT_INPUT',
   options: [
     {
       name: 'example',
