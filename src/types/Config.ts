@@ -29,5 +29,5 @@ export interface Config {
    * This is the URI for the database.
    * @type {string}
    */
-  mongooseURI: string;
+  mongooseURI?: string;
 }
