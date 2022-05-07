@@ -1,7 +1,37 @@
-Handler for discord.js version 13
+# djs-base-handlerTS
 
-`npm install` - install all required dependancies
+djs-base-handlerTS is a command handler for discord.js v13.
 
-`node index.js` - start the project
+[![GitHub issues](https://img.shields.io/github/issues/dragongoose/djs-base-handlerTS?style=for-the-badge)](https://github.com/dragongoose/djs-base-handlerTS/issues)
+[![GitHub forks](https://img.shields.io/github/forks/dragongoose/djs-base-handlerTS?style=for-the-badge)](https://github.com/dragongoose/djs-base-handlerTS/network)
+[![GitHub stars](https://img.shields.io/github/stars/dragongoose/djs-base-handlerTS?style=for-the-badge)](https://github.com/dragongoose/djs-base-handlerTS/stargazers)
+[![GitHub license](https://img.shields.io/github/license/dragongoose/djs-base-handlerTS?style=for-the-badge)](https://github.com/dragongoose/djs-base-handlerTS/blob/master/LICENSE)
 
-Only open pull requests for bug fixes, I want to keep the code as clean as possible, thanks!
+## Setup
+
+1. Clone the repository
+```bash
+git clone https://github.com/dragongoose/djs-base-handlerTS.git
+cd djs-base-handlerTS
+```
+2. Change the config to fit your needs
+
+4. Compile the repo
+```bash
+npx tsc
+```
+
+5. Run the bot
+```bash
+node ./build/index
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+
+
