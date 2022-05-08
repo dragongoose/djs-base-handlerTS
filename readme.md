@@ -14,8 +14,8 @@ djs-base-handlerTS is a command handler for discord.js v13.
 git clone https://github.com/dragongoose/djs-base-handlerTS.git
 cd djs-base-handlerTS
 ```
-2. Change the config to fit your needs
-
+2. Change the config to fit your needs <br />
+See [Setting up the config](#setting-up-the-config) for how to do this.
 3. Compile the repo
 ```bash
 npx tsc
