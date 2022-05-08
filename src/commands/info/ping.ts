@@ -5,6 +5,7 @@ export const ping: Command = {
   name: 'ping',
   aliases: ['p'],
   description: 'Ping the bot',
+  usage: 'ping <anything>',
 
   /**
    *
