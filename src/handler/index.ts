@@ -113,6 +113,11 @@ export default async (client: Client, data: Data) => {
     }
   }
 
+  if (data.config.verbose) {
+    // Message to inform user we are in verbose mode
+    console.log(chalk.cyan('[!] Verbose mode enabled'));
+  }
+
   client.on('ready', async () => {
     // Register for a single guild
     /*
