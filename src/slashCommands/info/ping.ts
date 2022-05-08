@@ -28,10 +28,9 @@ export const ping: SlashCommand = {
    * @param {CommandInteraction} interaction
    * @param {String[]} _args
    */
-  // eslint-disable-next-line prettier/prettier
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  run: async (client: Client, interaction: CommandInteraction, args: any) => {
-    console.log(args);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  run: async (client: Client, interaction: CommandInteraction, args) => {
+    //console.log(args);
     interaction.followUp({content: `${client.ws.ping}ms!`});
   },
 };

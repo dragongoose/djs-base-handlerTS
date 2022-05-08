@@ -13,8 +13,9 @@ export const ping: Command = {
    * @param {Message} message
    * @param {String[]} args
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   run: async (client: Client, message: Message, args: string[]) => {
     message.channel.send(`${client.ws.ping} ws ping`);
-    console.log(args);
+    //console.log(args);
   },
 };
