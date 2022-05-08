@@ -1,10 +1,26 @@
 import {Interaction} from 'discord.js';
 import {client, data} from '../../index';
+import * as chalk from 'chalk';
 
 client.on('interactionCreate', async (interaction: Interaction) => {
   if (interaction.isCommand()) {
     await interaction.deferReply({ephemeral: false}).catch(() => {});
     const cmd = data.slashCommands.get(interaction.commandName);
+
+    if (!cmd) {
+      // verbose logging
+      if (data.config.verbose) {
+        console.log(
+          chalk.cyan('[!]'),
+          chalk.red('Unknown command '),
+          chalk.green(interaction.commandName)
+        );
+      }
+
+      return interaction.reply({
+        content: `Command ${interaction.commandName} not found.`,
+      });
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const args: {[k: string]: any} = {};
@@ -24,13 +40,40 @@ client.on('interactionCreate', async (interaction: Interaction) => {
         interaction.guild!.members.cache.get(interaction.user.id) || null;
     }
 
-    cmd!.run(client, interaction, args);
+    cmd.run(client, interaction, args);
+
+    // verbose logging
+    if (data.config.verbose) {
+      console.log(
+        chalk.cyan('[!]'),
+        chalk.green(interaction.user?.tag || 'Unknown user'),
+        chalk.cyan('ran command'),
+        chalk.green(cmd.name)
+      );
+    }
   }
 
   if (interaction.isContextMenu()) {
     await interaction.deferReply({ephemeral: false});
     const command = data.slashCommands.get(interaction.commandName);
     if (command) command.run(client, interaction, {});
+
+    // verbose logging
+    if (data.config.verbose && command) {
+      console.log(
+        chalk.cyan('[!]'),
+        chalk.green(interaction.user?.tag || 'Unknown user '),
+        chalk.cyan('interacted with context menu '),
+        chalk.green(command.name)
+      );
+    } else if (data.config.verbose) {
+      console.log(
+        chalk.cyan('[!]'),
+        chalk.green(interaction.user?.tag || 'Unknown user '),
+        chalk.cyan('tried to interact with context menu'),
+        chalk.green(interaction.commandName)
+      );
+    }
   }
 
   // Autocomplete Handling
@@ -45,7 +88,19 @@ client.on('interactionCreate', async (interaction: Interaction) => {
       autocomplete = temp.autocomplete;
     }
 
-    if (!autocomplete) return;
+    if (!autocomplete) {
+      // verbose logging
+      if (data.config.verbose) {
+        console.log(
+          chalk.cyan('[!]'),
+          chalk.green(interaction.user?.tag || 'Unknown user '),
+          chalk.cyan('tried to autocomplete'),
+          chalk.green(interaction.commandName)
+        );
+      }
+
+      return;
+    }
 
     //Put the choices into an array
     const choices = autocomplete[focusedOption.name];
@@ -58,5 +113,15 @@ client.on('interactionCreate', async (interaction: Interaction) => {
 
     // Send the choices to the api
     await interaction.respond(final);
+
+    // verbose logging
+    if (data.config.verbose) {
+      console.log(
+        chalk.cyan('[!]'),
+        chalk.green(interaction.user?.tag || 'Unknown user '),
+        chalk.cyan('interacted with autocomplete on command'),
+        chalk.green(interaction.commandName)
+      );
+    }
   }
 });
