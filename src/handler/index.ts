@@ -15,7 +15,6 @@ export default async (client: Client, data: Data) => {
 
   for (let i = 0; i < commandArray.length; i++) {
     const command: Command = commandArray[i];
-    console.log(command);
 
     if (command.name) {
       data.commands.set(command.name, command);
