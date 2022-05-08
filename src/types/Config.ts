@@ -25,6 +25,11 @@ export interface Config {
   intents: number;
 
   /**
+   * If the bot should log to the console.
+   */
+  verbose?: boolean;
+
+  /**
    * The mongoose URI for the bot.
    * This is the URI for the database.
    * @type {string}
