@@ -1,6 +1,7 @@
 import {Message} from 'discord.js';
 import {client} from '../../index';
 import {data} from '../../index';
+import * as chalk from 'chalk';
 
 client.on('messageCreate', async (message: Message) => {
   if (
@@ -21,4 +22,13 @@ client.on('messageCreate', async (message: Message) => {
 
   if (!command) return;
   await command.run(client, message, args);
+
+  // verbose logging
+  if (data.config.verbose) {
+    console.log(
+      `${chalk.cyan('[!]')} ${chalk.green(message.author.tag)} ${chalk.cyan(
+        'ran command'
+      )} ${chalk.green(command.name)}`
+    );
+  }
 });
