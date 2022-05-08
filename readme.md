@@ -29,7 +29,6 @@ node ./build/index
 ## Setting up the config
 The config is located in the `config` folder.
 It has a few options you can set.
-
     * `prefix`: The prefix for the bot.
     * `token`: The token for the bot.
     * `intents`: The intents for the bot.
